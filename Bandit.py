@@ -10,7 +10,7 @@ logger = logging.getLogger("MAB Application")
 
 # Create console handler with a higher log level
 ch = logging.StreamHandler()
-ch.setLevel(logging.DEBUG)
+# ch.setLevel(logging.DEBUG)
 
 ch.setFormatter(CustomFormatter())
 
@@ -200,6 +200,8 @@ class EpsilonGreedy(Bandit):
         :param min_epsilon: The minimum value of epsilon for the epsilon-greedy algorithm. (Default value = 0.02)
         :return: A tuple containing the bandits and the rewards obtained during the experiment.
         """
+        logger.info("Initializing the Epsilon Greedy algorithm experiment.")
+        
         # Initialize the bandits
         bandits = [EpsilonGreedy(p) for p in bandit_probabilities]
 
@@ -251,6 +253,8 @@ class EpsilonGreedy(Bandit):
         :param bandit_rewards: A list of rewards for each bandit.
         :param num_trials: The number of trials to run the experiment.
         """
+        logger.info("Initializing the Epsilon Greedy algorithm report.")
+        
         # Run an experiment
         bandits, rewards= EpsilonGreedy.experiment(bandit_rewards, num_trials)
         
@@ -338,9 +342,11 @@ class ThompsonSampling(Bandit):
         :param plot: Whether to plot the bandit distributions during the experiment. (Default value = False)
         :return: The bandits and the rewards obtained during the experiment.
         """
+        logger.info("Initializing the Thompson Sampling algorithm experiment.")
+
         bandits = [ThompsonSampling(p) for p in bandit_rewards]
         
-        # Take 5 sample points from 10 to num_trials
+        # Take 6 sample points from 10 to num_trials
         sample_points = list(np.linspace(1, num_trials, 5, dtype=int))
         sample_points[0] = 10
         sample_points[-1] -= 1
@@ -379,6 +385,8 @@ class ThompsonSampling(Bandit):
         :param bandit_rewards: A list of true means for each bandit arm.
         :param num_trials: The number of trials to run the experiment.
         """
+        logger.info("Initializing the Thompson Sampling algorithm report.")
+
         # Run an experiment
         bandits, rewards = ThompsonSampling.experiment(bandit_rewards, num_trials, plot=plot)
         
@@ -443,6 +451,8 @@ def comparison(bandit_rewards, num_trials, different_plots=False):
     :param different_plots: A boolean indicating whether to plot the performance
                             in side-by-side plots or in one plot. (Default value is False)
     """
+    logger.info("Starting the comaprison between Epsilon Greedy and Thompson Sampling algorithms.")
+
     eg_bandits, eg_rewards = EpsilonGreedy.experiment(bandit_rewards, num_trials)
     ts_bandits, ts_rewards = ThompsonSampling.experiment(bandit_rewards, num_trials)
     

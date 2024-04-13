@@ -1,5 +1,4 @@
 __pycache__/
 test.py
 ma_hw2/
-epsilon_greedy.csv
-thompson_sampling.csv
+*.csv
