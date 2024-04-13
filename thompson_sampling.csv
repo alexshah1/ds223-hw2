@@ -1,0 +1,5 @@
+bandit_id,true_mean,mean_estimate,times_pulled,algorithm
+0,1,0.16055173598309463,1,Thompson Sampling
+1,2,0.7575015830713797,1,Thompson Sampling
+2,3,0,0,Thompson Sampling
+3,4,4.0044606127853175,19998,Thompson Sampling

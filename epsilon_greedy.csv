@@ -1,0 +1,5 @@
+bandit_id,true_mean,mean_estimate,times_pulled,algorithm
+0,1,1.0256256434785176,110,Epsilon Greedy
+1,2,1.9429245793382128,122,Epsilon Greedy
+2,3,3.141021303601053,133,Epsilon Greedy
+3,4,3.997330587981324,19635,Epsilon Greedy
